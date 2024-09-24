@@ -1,7 +1,7 @@
 # Algoritmos e Estrutura de Dados 2024
  Repertório criado para apresentar minha evolução durante as aulas da matéria da faculdade.
 
-Exercícios da disciplina Algoritmos e Estrutura de Dados ministrada pelo professor Dr. Ivan José dos Reis Filho, do curso Sistemas de Informação da UEMG Frutal.
+Sendo postado exercícios da disciplina Algoritmos e Estrutura de Dados ministrada pelo professor Dr. Ivan José dos Reis Filho, do curso Sistemas de Informação da UEMG Frutal.
 
 ### Ano de 2024 - 2º semestre.
 
