@@ -71,7 +71,7 @@ print("Pessoa 2\n",
 p2.myfunction_despedida()
 
 """
-#2° atividade
+#4° atividade
 class moto:
     def __init__(self,modelo,ano,cor,cilindrada):
         self.cor=cor
