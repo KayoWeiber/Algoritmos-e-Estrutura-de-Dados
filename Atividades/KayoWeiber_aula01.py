@@ -21,7 +21,7 @@ class Retângulo:
         print(area)
 dados=Retângulo(4,8)
 dados.calcular_area()
-'''
+
 #ex03
 class ContaBancaria:
     def __init__(self,titular,saldo):
@@ -63,3 +63,28 @@ while True:
     except ValueError:
         print("Valor inválido, digite os dados novamente")         
 print("Programa finalizado!")
+
+#ex04
+class Carro:
+    def __init__(self,marca,modelo,ano):
+        self.marca=marca
+        self.modelo=modelo
+        self.ano=ano
+    def descrição(self):
+        print(f"O Carro {self.modelo} da marca {self.marca} cujo o ano {self.ano} é um excelente carro para o dia a dia e para uma viagem com sua fámilia!")
+dados_carro=Carro("Bmw","X3",2020)
+dados_carro.descrição()
+'''
+#ex05
+class Estudante:
+    def __init__(self,nome,idade):
+        self.nome=nome
+        self.idade=idade
+    def saudacao(self):
+        if self.idade>0:
+            if self.idade>=18:
+                print(f"Olá {self.nome}, seja bem vindo a universidade!")
+            else:
+                print(f"Olá {self.nome} você precisa de acompanhamento de seus pais, seja bem vindo a universidade!")
+dados=Estudante("Kayo",19)
+dados.saudacao()
