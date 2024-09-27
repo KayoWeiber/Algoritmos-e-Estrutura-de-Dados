@@ -78,7 +78,7 @@ print("MODELO:",p2.modelo)
 print("CILINDRADA:",p2.cilindrada)
 p2.acerela()
 
-"""
+
 class tv:
     def __init__(self,volume,canal,status):
         self.volume=volume
@@ -119,7 +119,7 @@ while True:
     print()
 
     
-    """
+
 #1° atividade
 class pessoa:
     def __init__(self,nome,sexo,dt_nascimento,rg):
