@@ -45,98 +45,6 @@ while True:
     except ValueError:
         print("Valor inválido, digite um valor válido.")
 
-
-        
-
-
-
-
-#atividade-03
-cidade1=["Frutal","Uberlândia","Uberaba"]
-cidade2=["Rio Preto","São Carlos","Barretos", "Rio Claro","São Paulo"]
-cidade_res=cidade1+cidade2
-print(cidade_res)
-
-
-#atividade-04
-carros=["Gol", "Fusca", "Onix","Uno","Voyage"]
-carros[2:4]=["Toro","Virtus"]
-print(carros)
-
-
-#atividade-05
-lst_user=[]
-lst_user2=[]
-for i in range(4):
-    nome1=input(f"Digite o nome a ser colocado na lista:")
-    lst_user.append(nome1)
-for i in range(2):
-    nome2=input("digite o nome a ser inserido na posição 1 e 2: ")
-    lst_user.insert(i+1,nome2)
-for i in range(3):
-    nome3=input(f"Digite o nome a ser colocado na lista:")
-    lst_user2.append(nome3)    
-lst_user.extend(lst_user2)
-print(lst_user)
-
-
-#atividade-06
-lista_aluno=[]
-lista_matricula=[]
-class aluno:
-    def __init__(self,nome,matricula):
-        self.nome=nome
-        self.matricula=matricula
-        lista_aluno.append(nome)
-        lista_matricula.append(matricula)
-    def exibir_detalhes(self):
-        num=0
-        for i in lista_aluno:
-            print("nome:",lista_aluno[num],"\nmátricula:",lista_matricula[num])
-            num+=1
-class Curso:
-    def __init__(self,nome_curso,alunos_curso):
-        self.nome_curso=nome_curso
-        self.alunos=alunos_curso
-        nome_curso=[]
-
-dados=aluno("KAyo",10)
-dados.exibir_detalhes()
-
-#TERMINAR EXERCÍCIOS 06
-
-
-
-
-
-
-
-#Atividade-07
-#ex-7.1
-num=[x for x in range(1,11)]
-print(num)
-#ex-7.2
-num=[x for x in range(-50,51,5)]
-print(num)
-#ex-7.3
-num=[x for x in range(1000) if(x%2==0) and (x%3==0)]
-print(num)
-
-#atividade-08
-notas=[]
-cont=1
-for i in range(5):
-    participante=float(input(f"Digite a nota do participante {cont}: "))
-    cont+=1
-    notas.append(participante)
-notas.sort()
-print("Ordem crescente")
-notas.reverse()
-print(f"Ordem descrecente:{notas}")
-print(f"Melhor resultado,{notas[0]}")
-print(f"pior desempenho,{notas[-1]}")
-'''
-
 #atividade-02
 class QuartoHotel:
     def __init__(self,numero_quarto,tipo_quarto):
@@ -181,3 +89,109 @@ while True:
     
     except ValueError:
         print("Valor inválido, digite um valor válido.")
+        
+
+
+
+
+#atividade-03
+cidade1=["Frutal","Uberlândia","Uberaba"]
+cidade2=["Rio Preto","São Carlos","Barretos", "Rio Claro","São Paulo"]
+cidade_res=cidade1+cidade2
+print(cidade_res)
+
+
+#atividade-04
+carros=["Gol", "Fusca", "Onix","Uno","Voyage"]
+carros[2:4]=["Toro","Virtus"]
+print(carros)
+
+
+#atividade-05
+lst_user=[]
+lst_user2=[]
+for i in range(4):
+    nome1=input(f"Digite o nome a ser colocado na lista:")
+    lst_user.append(nome1)
+for i in range(2):
+    nome2=input("digite o nome a ser inserido na posição 1 e 2: ")
+    lst_user.insert(i+1,nome2)
+for i in range(3):
+    nome3=input(f"Digite o nome a ser colocado na lista:")
+    lst_user2.append(nome3)    
+lst_user.extend(lst_user2)
+print(lst_user)
+
+
+
+
+
+
+
+
+
+
+
+#Atividade-07
+#ex-7.1
+num=[x for x in range(1,11)]
+print(num)
+#ex-7.2
+num=[x for x in range(-50,51,5)]
+print(num)
+#ex-7.3
+num=[x for x in range(1000) if(x%2==0) and (x%3==0)]
+print(num)
+
+#atividade-08
+notas=[]
+cont=1
+for i in range(5):
+    participante=float(input(f"Digite a nota do participante {cont}: "))
+    cont+=1
+    notas.append(participante)
+notas.sort()
+print("Ordem crescente")
+notas.reverse()
+print(f"Ordem descrecente:{notas}")
+print(f"Melhor resultado,{notas[0]}")
+print(f"pior desempenho,{notas[-1]}")
+'''
+#atividade-06
+lista_aluno=[]
+lista_matricula=[]
+class aluno:
+    def __init__(self,nome,matricula):
+        self.nome=nome
+        self.matricula=matricula
+        lista_aluno.append(nome)
+        lista_matricula.append(matricula)
+    def exibir_detalhes(self):
+        num=0
+        for i in lista_aluno:
+            print("nome:",lista_aluno[num],"\nmátricula:",lista_matricula[num])
+            num+=1
+class Curso:
+    def __init__(self,nome_curso,alunos_curso):
+        self.nome_curso=nome_curso
+        self.alunos=alunos_curso
+        self.lista=[]
+        
+    def adionar_aluno(self):
+        count=1
+        if lista_aluno:
+            for i in lista_aluno:
+                print(f"{count}- {i}")
+                count+=1
+        else:
+            print("Não existe aluno a ser adicionado")
+        aluno_add=int(input("Digite o número do aluno que deseja adicionar ao curso: "))
+        if aluno_add<0 or aluno_add>count:
+            print("O valor digitado não é válido.")
+        else:
+            res=aluno_add-1
+            aluno_curso=lista_aluno[res]
+            
+            
+        
+#terminar
