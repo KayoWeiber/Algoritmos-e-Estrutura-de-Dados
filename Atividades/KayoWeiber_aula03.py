@@ -44,27 +44,7 @@ while True:
             break             
     except ValueError:
         print("Valor inválido, digite um valor válido.")
-#atividade-02
-class QuartoHotel:
-    def __init__(self,numero_quarto,tipo_quarto):
-        self.numero_quarto=numero_quarto
-        self.tipo=tipo_quarto
-        self.ocupado=False
-    def reservar(self):
-        if not self.ocupado:
-            self.ocupado=True
-            print(f"O quarto {self.numero_quarto} foi reservado.")
-        else:
-            print(f"O quarto {self.numero_quarto} foi reservado.")
-    def liberar_quarto(self):
-            if not self.ocupado:
-                self.ocupado=False
-                print(f"O quarto {self.numero_quarto} foi liberado.")
-            else:
-                print(f"O quarto {self.numero_quarto} já está disponível.")
-    def verificar_status(self):
-        status="ocupado" if self.ocupado else "disponível"
-        print(f"O quarto{self.numero_quarto}")
+
 
         
 
@@ -141,7 +121,7 @@ print(num)
 #ex-7.3
 num=[x for x in range(1000) if(x%2==0) and (x%3==0)]
 print(num)
-'''
+
 #atividade-08
 notas=[]
 cont=1
@@ -155,3 +135,49 @@ notas.reverse()
 print(f"Ordem descrecente:{notas}")
 print(f"Melhor resultado,{notas[0]}")
 print(f"pior desempenho,{notas[-1]}")
+'''
+
+#atividade-02
+class QuartoHotel:
+    def __init__(self,numero_quarto,tipo_quarto):
+        self.numero_quarto=numero_quarto
+        self.tipo=tipo_quarto
+        self.ocupado=False
+    def reservar(self):
+        if not self.ocupado:
+            self.ocupado=True
+            print(f"O quarto {self.numero_quarto} foi reservado.")
+        else:
+            print(f"O quarto {self.numero_quarto} já está ocupado.")
+    def liberar_quarto(self):
+            if not self.ocupado:
+                self.ocupado=False
+                print(f"O quarto {self.numero_quarto} foi liberado.")
+            else:
+                print(f"O quarto {self.numero_quarto} já está disponível.")
+    def verificar_status(self):
+        status="ocupado" if self.ocupado else "disponível"
+        print(f"O quarto{self.numero_quarto} está {status}")
+while True:
+    try:
+        num_quarto=int(input(f"Digite o número do quarto: "))
+        tip_quarto=str(input("Digite um tipo de quarto: "))
+        quarto=QuartoHotel(num_quarto,tip_quarto)
+        while True:
+            menu=int(input("menu:\n1- Reservar quarto\n2- liberar quarto\n3-Verificar status\n4-sair\nresposta: "))
+            if menu>0 and menu<5:
+                if menu==1:
+                    quarto.reservar()
+                elif menu==2:
+                    quarto.liberar_quarto()
+                elif menu==3:
+                    quarto.verificar_status()
+                else:
+                    print("Programa encerrando.")
+                    break
+            else:
+                print("Válor digitado é inválido.")
+        break
+    
+    except ValueError:
+        print("Valor inválido, digite um valor válido.")
