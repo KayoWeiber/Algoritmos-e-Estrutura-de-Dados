@@ -162,36 +162,74 @@ lista_aluno=[]
 lista_matricula=[]
 class aluno:
     def __init__(self,nome,matricula):
-        self.nome=nome
-        self.matricula=matricula
-        lista_aluno.append(nome)
-        lista_matricula.append(matricula)
+        self.nome = nome
+        self.matricula = matricula
+        lista_aluno.append(self)
+        lista_matricula.append(self.matricula)
     def exibir_detalhes(self):
-        num=0
-        for i in lista_aluno:
-            print("nome:",lista_aluno[num],"\nmátricula:",lista_matricula[num])
-            num+=1
+        for aluno in lista_aluno:
+            print(f"Nome: {aluno.nome}\nMatrícula: {aluno.matricula}")
 class Curso:
-    def __init__(self,nome_curso,alunos_curso):
+    def __init__(self, nome_curso):
         self.nome_curso=nome_curso
-        self.alunos=alunos_curso
-        self.lista=[]
-        
+        self.alunos=[]
     def adionar_aluno(self):
-        count=1
-        if lista_aluno:
-            for i in lista_aluno:
-                print(f"{count}- {i}")
-                count+=1
-        else:
-            print("Não existe aluno a ser adicionado")
-        aluno_add=int(input("Digite o número do aluno que deseja adicionar ao curso: "))
-        if aluno_add<0 or aluno_add>count:
-            print("O valor digitado não é válido.")
-        else:
-            res=aluno_add-1
-            aluno_curso=lista_aluno[res]
-            
+        if not lista_aluno:
+            print("Não existe aluno a ser adicionado.")
+            return
+        for i, aluno in enumerate(lista_aluno, start=1):
+            print(f"{i} - {aluno.nome}")
+        try:
+            aluno_add=int(input("Digite o número do aluno que deseja adicionar ao curso: "))
+            if aluno_add<1 or aluno_add>len(lista_aluno):
+                print("O valor digitado não é válido.")
+            else:
+                aluno_selecionado=lista_aluno[aluno_add-1]
+                self.alunos.append(aluno_selecionado)
+                print(f"Aluno '{aluno_selecionado.nome}' foi adicionado ao curso.")
+        except ValueError:
+            print("Digite um número válido.")
+    def exibir_detalhes_curso(self):
+        for aluno in self.alunos:
+            print(f"Alunos no Curso {self.nome_curso}\nNome: {aluno.nome}\nMatrícula: {aluno.matricula}")
+while True:
+    try:
+        while True:
+            menu=int(input("menu:\n1- aluno\n2- Curso\n3-sair\nDigite a opção desejada: "))
+            if menu<1 or menu>3:
+                print("O válor digitado não é válido.")
+            else:
+                if menu==1:
+                    count=0
+                    while True:
+                        try:
+                            menu2=int(input("menu:\n1-criar aluno\n2-exibir alunos\n3-sair"))
+                            if menu2>2 or menu2<1:
+                                print("Digite um valor válido")
+                            else:
+                                if menu2==1:
+                                    add_aluno=str(input(f"Digite o nome do aluno {count}: "))
+                                    add_matricula=str(input(f"Digite a matricula do aluno {count}: "))
+                                    aluno_class = aluno(add_aluno,add_matricula)
+                                    count+=1
+                                elif menu==2:
+                                    aluno_class.exibir_detalhes()
+                                
+                                else:
+                                    break
+                        except ValueError:
+                            print("O valor digitado não é válido.")
+                elif menu==2:
+                    while True:
+                        try:
+                            
+                        
+                        except ValueError:
+                            
+                    
+                    
+                    
+    except ValueError:
+        print("Digite um valor válido")          
             
         
-#terminar
