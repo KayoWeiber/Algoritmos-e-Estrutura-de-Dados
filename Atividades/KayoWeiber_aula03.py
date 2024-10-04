@@ -123,40 +123,7 @@ lst_user.extend(lst_user2)
 print(lst_user)
 
 
-
-
-
-
-
-
-
-
-
-#Atividade-07
-#ex-7.1
-num=[x for x in range(1,11)]
-print(num)
-#ex-7.2
-num=[x for x in range(-50,51,5)]
-print(num)
-#ex-7.3
-num=[x for x in range(1000) if(x%2==0) and (x%3==0)]
-print(num)
-
-#atividade-08
-notas=[]
-cont=1
-for i in range(5):
-    participante=float(input(f"Digite a nota do participante {cont}: "))
-    cont+=1
-    notas.append(participante)
-notas.sort()
-print("Ordem crescente")
-notas.reverse()
-print(f"Ordem descrecente:{notas}")
-print(f"Melhor resultado,{notas[0]}")
-print(f"pior desempenho,{notas[-1]}")
-'''
+#ex06
 lista_alunos = []
 lista_matriculas = []
 cursos = []
@@ -277,4 +244,95 @@ while True:
     except ValueError:
         print("Digite um valor válido.")
 
+    
+
+#Atividade-07
+#ex-7.1
+num=[x for x in range(1,11)]
+print(num)
+#ex-7.2
+num=[x for x in range(-50,51,5)]
+print(num)
+#ex-7.3
+num=[x for x in range(1000) if(x%2==0) and (x%3==0)]
+print(num)
+
+#atividade-08
+notas=[]
+cont=1
+for i in range(5):
+    participante=float(input(f"Digite a nota do participante {cont}: "))
+    cont+=1
+    notas.append(participante)
+notas.sort()
+print("Ordem crescente")
+notas.reverse()
+print(f"Ordem descrecente:{notas}")
+print(f"Melhor resultado,{notas[0]}")
+print(f"pior desempenho,{notas[-1]}")
+'''
+#ex08
+lista_titulo=[]
+lista_prioridade=[]
+class Tarefa: #classe que vou utilizar apenas para adicionar a tarefas em seus campos.
+    def __init__(self,titulo,prioridade):
+        self.titulo=titulo
+        self.prioridade=prioridade
+        lista_prioridade.append(self.prioridade)
+        lista_titulo.append(self.titulo)
+class GerenciadorDeTarefas: #classe principal de operações.
+    def __init__(self):
+        print("Tarefas atuais.")
+        print(lista_titulo)
+    def adicionar_tarefa(self):
+        while True:
+            try:
+                while True:
+                    try:
+                        titulo_tarefa=str(input('Digite o título da tarefa: '))
+                        grau_prioridade=int(input("De 1 à 5 qual o grau de prioridade dessa tarefa: "))
+                        if grau_prioridade<1 or grau_prioridade>5:
+                            print("Digite um válor entre 0 e 5, por favor.")
+                        else:
+                            break
+                    except ValueError:
+                        print("Por favor digite um valor válido")
+                Tarefa(titulo_tarefa,grau_prioridade)
+                print("Tarefa adionado com  sucesso.")
+                break
+            except ValueError:
+                print("O válor digitado não é válido.")
+    def remover_tarefa(self):
+        if not lista_titulo:
+            print("Não existe tarefa a ser removida.")
+            return
+        for i, tarefa in enumerate(lista_titulo, start=1):
+            print(f"{i} - {tarefa}")
+        while True:
+            try:
+                tarefa_remov=int(input("Digite o número da atividade que deseja remover: "))
+                if tarefa_remov<1 or tarefa_remov>len(lista_titulo):
+                    print("O valor digitado não é válido.")
+                else:
+                    tarefa_select=lista_titulo[tarefa_remov - 1]
+                    index_tarefa=lista_titulo.index(tarefa_select) 
+                    lista_titulo.remove(tarefa_select)
+                    lista_prioridade.remove(lista_prioridade[index_tarefa])
+                    print("Tarefa removida.")
+                    break
+    
+            except ValueError:
+                print("O Válor digitado não é válido.")
+    def listar_tarefa(self):
+        if not lista_titulo:
+            print("Não existe lista!")
+            return
+        for i,(tarefa, prioridade) in enumerate(zip(lista_titulo,lista_prioridade),start=1):
+            print(f"{i} - Tarefa: {tarefa} Prioridade: {prioridade}")
+
+
+gerenciador = GerenciadorDeTarefas()
+gerenciador.adicionar_tarefa()
+#gerenciador.remover_tarefa()
+gerenciador.listar_tarefa()
         
