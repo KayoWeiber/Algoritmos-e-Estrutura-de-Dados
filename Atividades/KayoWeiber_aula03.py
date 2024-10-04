@@ -282,8 +282,11 @@ class Tarefa: #classe que vou utilizar apenas para adicionar a tarefas em seus c
         lista_titulo.append(self.titulo)
 class GerenciadorDeTarefas: #classe principal de operações.
     def __init__(self):
-        print("Tarefas atuais.")
-        print(lista_titulo)
+        if not lista_titulo:
+            print("No momento não possui tarefas.")
+        else:
+            for i, tarefa in enumerate(lista_titulo, start=1):
+                print(f"{i} - {tarefa}")
     def adicionar_tarefa(self):
         while True:
             try:
@@ -337,10 +340,58 @@ class GerenciadorDeTarefas: #classe principal de operações.
         tarefas_prioridades.sort
         for i,(prioridade, tarefa) in enumerate(tarefas_prioridades, start=1):
             print(f"{i} - tarefa: {tarefa}  prioridade {prioridade}")
+    def  adicionar_multiplas_tarefas(self):
+        lista_extensão_titulo=[]
+        lista_extensão_prioridade=[]
+        while True:
+            try:
+                menu_extend=int(input("menu:\n1 - Adicionar nova tarefa\n2 - Salvar tarefas\nDigite sua opção: "))
+                if menu_extend<1 or menu_extend>2:
+                    print('Digite um válor válido')
+                else:
+                        if menu_extend==1:
+                            while True:
+                                try:
+                                    titulo_tarefa=str(input('Digite o título da tarefa: '))
+                                    grau_prioridade=int(input("De 1 à 5 qual o grau de prioridade dessa tarefa: "))
+                                    if grau_prioridade<1 or grau_prioridade>5:
+                                        print("Digite um válor entre 0 e 5, por favor.")
+                                    else:
+                                        lista_extensão_titulo.append(titulo_tarefa)
+                                        lista_extensão_prioridade.append(grau_prioridade)
+                                        print("Tarefa adicionado com sucesso.") 
+                                        break                                 
+                                except ValueError:
+                                    print("Por favor digite um valor válido")
+                        else:
+                            lista_titulo.extend(lista_extensão_titulo)
+                            lista_prioridade.extend(lista_extensão_prioridade)
+                            print("Lista atualizada.")
+                            self.listar_tarefa()
+                            return
+                        
+            except ValueError:
+                print("O valor digitado não é válido.")
 
-gerenciador = GerenciadorDeTarefas()
-gerenciador.adicionar_tarefa()
-#gerenciador.remover_tarefa()
-#gerenciador.listar_tarefa()
-gerenciador.ordenar_tarefas()
-        
+while True:
+    try:
+        menu_principal=int(input("====Gerenciador de Tarefas===\n1. Adicionar tarefa\n2. Adicionar Múltiplas tarefas\n3. Remover tarefa \n4. Listar tarefas\n5. Ordenar tarefas por prioridade\n6. sair\nEscolha uma opção: "))
+        if menu_principal<1 or menu_principal>6:
+            print("O valor digitado não é válido")
+        else:
+            escolha_menu=GerenciadorDeTarefas()
+            if menu_principal==1:
+                escolha_menu.adicionar_tarefa()
+            elif menu_principal==2:
+                escolha_menu.adicionar_multiplas_tarefas()
+            elif menu_principal==3:
+                escolha_menu.remover_tarefa()
+            elif menu_principal==4:
+                escolha_menu.listar_tarefa()
+            elif menu_principal==5:
+                escolha_menu.ordenar_tarefas()
+            else:
+                print("Programa finalizado.")
+                break
+    except ValueError:
+        print("O válor digitado não é válido.")
