@@ -329,10 +329,18 @@ class GerenciadorDeTarefas: #classe principal de operações.
             return
         for i,(tarefa, prioridade) in enumerate(zip(lista_titulo,lista_prioridade),start=1):
             print(f"{i} - Tarefa: {tarefa} Prioridade: {prioridade}")
-
+    def ordenar_tarefas(self):
+        if not lista_titulo:
+            print("Não existe lista!")
+            return
+        tarefas_prioridades=list(zip(lista_prioridade,lista_titulo))
+        tarefas_prioridades.sort
+        for i,(prioridade, tarefa) in enumerate(tarefas_prioridades, start=1):
+            print(f"{i} - tarefa: {tarefa}  prioridade {prioridade}")
 
 gerenciador = GerenciadorDeTarefas()
 gerenciador.adicionar_tarefa()
 #gerenciador.remover_tarefa()
-gerenciador.listar_tarefa()
+#gerenciador.listar_tarefa()
+gerenciador.ordenar_tarefas()
         
