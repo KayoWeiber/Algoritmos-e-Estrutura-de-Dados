@@ -271,7 +271,7 @@ print(f"Ordem descrecente:{notas}")
 print(f"Melhor resultado,{notas[0]}")
 print(f"pior desempenho,{notas[-1]}")
 '''
-#ex08
+#ex09
 lista_titulo=[]
 lista_prioridade=[]
 class Tarefa: #classe que vou utilizar apenas para adicionar a tarefas em seus campos.
