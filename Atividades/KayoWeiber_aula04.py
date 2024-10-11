@@ -14,6 +14,7 @@ class ListaEncadeada:
         while corrente:
             print(corrente.dado)
             corrente=corrente.proximo
+        return
     def buscar(self, valor):
         corrente=self.cabeca
         sts=False
@@ -66,18 +67,53 @@ while True:
             if menu_principal==1:
                 while True:
                     try:
-                        menu_inserir=int(input("menu\n 1-adionar valores\n2-sair"))
+                        menu_inserir=int(input("\nmenu\n1-adionar valores\n2-sair\nDigite a opção desejada: "))
                         if menu_inserir<1 or menu_inserir>2:
                             print("O valor digitado não é válido")
                         else:
                             if menu_inserir==1:
                                 valor_add=int(input("Digite o valor a ser adicionado: "))
-                                lista.Insere(valor_add)
+                                lista.insere(valor_add)
                                 print(f"O valor {valor_add} foi adicionado com sucesso")
                             else:
                                 break
                     except ValueError:
-                        print("Digite o valor válido.")
-    
+                       print("Digite o valor válido.")
+            elif menu_principal==2:
+                lista.imprime()
+            elif menu_principal==3:
+                while True:
+                    try:
+                        menu_buscar=int(input("\nMenu:\n1-Buscar o valor\n2-sair\nDigite a opção desejada: "))
+                        if menu_buscar==1:
+                            lista.imprime()
+                            valor_buscar=int(input("Digite o valor a ser buscado: "))
+                            lista.buscar(valor_buscar)
+                        else:break
+                    except ValueError:
+                        print("Digite um valor válido.")
+            elif menu_principal==4:
+                    try:
+                        menu_remover=int(input("\nMenu:\n1-Remover valor\n2-sair\nDigite a opção desejada: "))
+                        if menu_remover==1:
+                            lista.imprime()
+                            valor_remover=int(input("Digite o valor a ser removido: "))
+                            lista.remover(valor_remover)
+                        else:break
+                    except ValueError:
+                        print("Digite um valor válido.")
+            elif menu_principal==5:
+                    try:
+                        menu_alterar=int(input("\nMenu:\n1-Alterar valor\n2-sair\nDigite a opção desejada: "))
+                        if menu_alterar==1:
+                            lista.imprime()
+                            valor_alterar=int(input("Digite o valor a ser alterado: "))
+                            lista.alterar(valor_alterar)
+                        else:break
+                    except ValueError:
+                        print("Digite um valor válido.")
+            else:
+                print("Programa finalizado.")
+                break               
     except ValueError:
         print("Valor digitado não é válido.")
