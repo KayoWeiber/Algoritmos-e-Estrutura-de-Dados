@@ -6,6 +6,7 @@ Sendo postado exercícios da disciplina Algoritmos e Estrutura de Dados ministra
 ### Ano de 2024 - 2º semestre.
 
 ### Linguagem utilizada:
+---
 <div style="display:inline_block">
 <img align="center" alt="Python" src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white"/>
 </div>
