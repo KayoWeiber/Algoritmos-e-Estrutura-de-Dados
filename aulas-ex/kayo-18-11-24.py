@@ -1,3 +1,4 @@
+'''
 fila=[]
 while True:
     try:
@@ -33,3 +34,13 @@ while True:
                 break      
     except ValueError:
         print("Valor inválido")
+        
+'''
+class Hist:
+    def __init__(self):
+        self.dicio=[{}]
+    def adicionar(self,id,url,timestamp):
+        Historico={"id":id,"url":url,"timestamp":timestamp}
+        self.dicio.append(Historico)
+        print("Histórico atualizado")
+    
