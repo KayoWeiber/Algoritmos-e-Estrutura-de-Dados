@@ -76,7 +76,7 @@ while True:
         print("O válor digitado não é válido!")
     
 
-
+'''
 #ATIVIDADE LIFO
 class Hist:
     
@@ -136,4 +136,9 @@ while True:
                 
     except ValueError:
         print("O válor digitado não é válido!")
-'''
+
+
+
+
+
+
