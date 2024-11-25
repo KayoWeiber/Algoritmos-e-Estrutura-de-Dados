@@ -186,7 +186,7 @@ estacao=EstacaoTrem(vagoes)
 print(f"Vagões na entrada: {vagoes}")
 estacao.organizar_vagoes()
 estacao.mostrar_resultado()
-'''
+
 #Exercício 6 - Simulação de Atendimento de Chamadas (Fila Circular)
 class FilaCircular:
     def __init__(self, capacidade):
@@ -239,3 +239,151 @@ fila.atender_chamada()
 fila.visualizar_fila()
 fila.adicionar_chamada("Chamada 5")
 fila.visualizar_fila()
+
+#Exercício 7 - Verificação de Palíndromo (Pilha e Fila)
+from collections import deque
+
+def verificar_palindromo(palavra):
+    fila=deque()  
+    pilha=[]      
+    for caractere in palavra:
+        fila.append(caractere)
+        pilha.append(caractere)
+    while fila:
+        if fila.popleft()!=pilha.pop():
+            return False
+    return True
+
+palavras=["radar", "arara", "python", "nivel", "palindromo"]
+for palavra in palavras:
+    if verificar_palindromo(palavra):
+        print(f"'{palavra}' é um palíndromo.")
+    else:
+        print(f"'{palavra}' não é um palíndromo.")
+
+
+#exercício 8 - Análise de Pedidos em um Restaurante (Fila e Pilha)
+from collections import deque
+
+class Restaurante:
+    def __init__(self):
+        self.fila_pedidos=deque()  
+        self.pilha_pratos=[]       
+    def adicionar_pedido(self, pedido):
+        self.fila_pedidos.append(pedido)
+        print(f"Pedido '{pedido}' adicionado à fila.")
+
+    def preparar_pedido(self):
+        if not self.fila_pedidos:
+            print("Nenhum pedido na fila para preparar.")
+            return
+        pedido=self.fila_pedidos.popleft()
+        self.pilha_pratos.append(pedido)
+        print(f"Pedido '{pedido}' foi preparado e adicionado à pilha de pratos servidos.")
+
+    def servir_prato(self):
+        if not self.pilha_pratos:
+            print("Nenhum prato pronto para servir.")
+            return
+        prato=self.pilha_pratos.pop()
+        print(f"Prato '{prato}' foi servido.")
+
+    def mostrar_estado(self):
+        print("\nEstado atual:")
+        print(f"Fila de pedidos: {list(self.fila_pedidos)}")
+        print(f"Pilha de pratos servidos: {self.pilha_pratos}")
+        print()
+
+restaurante = Restaurante()
+restaurante.adicionar_pedido("Pizza")
+restaurante.adicionar_pedido("arroz")
+restaurante.adicionar_pedido("Salada")
+restaurante.mostrar_estado()
+restaurante.preparar_pedido()
+restaurante.preparar_pedido()
+restaurante.mostrar_estado()
+restaurante.servir_prato()
+restaurante.mostrar_estado()
+restaurante.preparar_pedido()
+restaurante.servir_prato()
+restaurante.servir_prato()
+restaurante.mostrar_estado()
+
+#Exercício 9 - Filtragem de Dados em Lote (Fila e Pilha)
+from collections import deque
+
+class ProcessamentoSensores:
+    def __init__(self):
+        self.fila_dados=deque()
+        self.pilha_dados_validos=[]
+
+    def receber_dados(self, dados):
+        for dado in dados:
+            self.fila_dados.append(dado)
+        print(f"Dados recebidos: {dados}")
+
+    def verificar_qualidade(self):
+        while self.fila_dados:
+            dado=self.fila_dados.popleft()
+            if self.eh_valido(dado):
+                self.pilha_dados_validos.append(dado)
+                print(f"Dado '{dado}' é válido e foi adicionado à pilha.")
+            else:
+                print(f"Dado '{dado}' é inválido e foi descartado.")
+
+    def eh_valido(self, dado):
+        return isinstance(dado, (int, float)) and dado>=0
+
+    def enviar_dados(self):
+        if not self.pilha_dados_validos:
+            print("Nenhum dado válido para enviar.")
+            return
+        print(f"Enviando dados válidos: {self.pilha_dados_validos}")
+        self.pilha_dados_validos.clear()
+
+    def mostrar_estado(self):
+        print("\nEstado atual:")
+        print(f"Fila de dados: {list(self.fila_dados)}")
+        print(f"Pilha de dados válidos: {self.pilha_dados_validos}")
+        print()
+
+processador = ProcessamentoSensores()
+processador.receber_dados([10, -5, 20.5, "erro", 15, 0])
+processador.mostrar_estado()
+processador.verificar_qualidade()
+processador.mostrar_estado()
+processador.enviar_dados()
+processador.mostrar_estado()
+'''
+
+
+#Exercício 10 - Caminho de Labirinto (Pilha)
+def encontrar_saida(labirinto, inicio, fim):
+    pilha = []
+    caminho_percorrido = []
+    movimentos = [(0, 1), (1, 0), (0, -1), (-1, 0)]  #direita, baixo, esquerda, cima
+    pilha.append(inicio)
+    while pilha:
+        atual = pilha.pop()
+        caminho_percorrido.append(atual)
+        if atual == fim:
+            return caminho_percorrido
+        x, y = atual
+        labirinto[x][y]=1
+        for dx, dy in movimentos:
+            novo_x, novo_y = x + dx, y + dy
+            if 0 <= novo_x < len(labirinto) and 0 <= novo_y < len(labirinto[0]) and labirinto[novo_x][novo_y] == 0:
+                pilha.append((novo_x, novo_y))
+    return "Não há caminho possível até a saída."
+labirinto = [
+    [0, 1, 0, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 0, 1, 0],
+    [1, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0],
+]
+inicio = (0, 0)
+fim = (4, 4)
+
+caminho = encontrar_saida(labirinto, inicio, fim)
+print("Caminho percorrido:", caminho)
