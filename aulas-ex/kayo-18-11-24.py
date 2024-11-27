@@ -1,4 +1,5 @@
 '''
+#ATIVIDADE 1 FIFO
 fila=[]
 while True:
     try:
@@ -35,12 +36,109 @@ while True:
     except ValueError:
         print("Valor inválido")
         
-'''
-class Hist:
+#ATIVIDADE 2 FIFO
+from collections import deque
+class banco:
     def __init__(self):
-        self.dicio=[{}]
+        self.fila=deque([])
+    def adicionarCliente(self,nome):
+        self.fila.append(nome)
+        print("Cliente adicionado com sucesso!")
+    def atenderCliente(self):
+        self.fila.popleft()
+        print("Cliente atendido!")
+    def exibirFila(self):
+        for i in self.fila:
+            print(i)
+Bank=banco()
+while True:
+    try:
+        menu=int(input("\nMenu:\n1-Adicionar Cliente a fila\n2-Atender próximo cliente\n3-Exibir fila de cliente\n4-sair\n Digite a operação desejada: "))
+        if menu<0 or menu>5:
+            print("Por favor, digite um número válido!")
+        else:
+            if menu==1:
+                while True:
+                    try:
+                        cliente=str(input('Digite o nome do cliente:'))
+                        break
+                    except ValueError:
+                        print("O valor digitado está incorreto.")
+                Bank.adicionarCliente(cliente)
+            elif menu==2:
+                Bank.atenderCliente()
+            elif menu==3:
+                Bank.exibirFila()
+            else:
+                print("Programa Finalizado.")
+                break      
+    except ValueError:
+        print("O válor digitado não é válido!")
+    
+
+'''
+#ATIVIDADE LIFO
+class Hist:
+    
+    def __init__(self):
+        self.dicio=[]
+
     def adicionar(self,id,url,timestamp):
         Historico={"id":id,"url":url,"timestamp":timestamp}
         self.dicio.append(Historico)
         print("Histórico atualizado")
-    
+        
+    def exibirHistorico(self):
+        if self.dicio:
+            for i in self.dicio[::-1]:
+                print(i)
+        else:
+            print("historico está vazio.")
+            
+    def removerPag(self):
+        if self.dicio:
+            self.dicio.pop()
+            print("Ultimo item acessado foi removido")
+        else:
+            print("historico está vazio.")
+            
+    def limparHistorico(self):
+        self.dicio.clear()
+        print("historico limpo!")
+        
+historico=Hist()
+
+while True:
+    try:
+        menu=int(input("\nMenu:\n1-Adicionar página ao histórico\n2-Remover a última página visitada\n3-Exibir histórico atual\n4-Limpar o Histórico\n5-SAIR\n Digite a operação desejada: "))
+        if menu<0 or menu>5:
+            print("Por favor, digite um número válido!")
+        else:
+            if menu==1:
+                while True:
+                    try:
+                        id=int(input("Digite o ID do historico: "))
+                        url=str(input("Digite a URL do historico: "))
+                        timestamp=str(input("Digite a quantidade de tempo acessado: "))
+                        break
+                    except ValueError:
+                        print("O valor digitado está incorreto.")
+                historico.adicionar(id,url,timestamp)
+            elif menu==2:
+                historico.removerPag()
+            elif menu==3:
+                historico.exibirHistorico()
+            elif menu==4:
+                historico.limparHistorico()
+            else:
+                print("Programa Finalizado.")
+                break
+                
+    except ValueError:
+        print("O válor digitado não é válido!")
+
+
+
+
+
+
