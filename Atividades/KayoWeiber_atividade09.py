@@ -9,7 +9,7 @@ class GrafoMapaCidade:
     def adicionar_cruzamento(self, origem, destino):
         if origem in self.adjacencia and destino in self.adjacencia:
             self.adjacencia[origem].append(destino)
-            self.adjacencia[destino].append(origem)  # Grafo bidirecional
+            self.adjacencia[destino].append(origem)  
 
     def exibir_grafo(self):
         for local, vizinhos in self.adjacencia.items():
@@ -21,7 +21,6 @@ class GrafoMapaCidade:
             visitados = set()
         visitados.add(inicio)
         print(inicio, end=" ")
-
         for vizinho in self.adjacencia[inicio]:
             if vizinho not in visitados:
                 self.buscar_profundidade(vizinho, visitados)
@@ -30,18 +29,16 @@ class GrafoMapaCidade:
         visitado = set()
         fila = [inicio]
         visitado.add(inicio)
-
         while fila:
             vertice = fila.pop(0)
             print(vertice, end=" ")
-
             for vizinho in self.adjacencia[vertice]:
                 if vizinho not in visitado:
                     visitado.add(vizinho)
                     fila.append(vizinho)
 
     def encontrar_caminho_bfs(self, inicio, destino):
-        """Encontra o menor caminho entre dois locais usando BFS."""
+        
         if inicio not in self.adjacencia or destino not in self.adjacencia:
             return None
 
@@ -57,23 +54,19 @@ class GrafoMapaCidade:
                 if vizinho not in visitado:
                     visitado.add(vizinho)
                     fila.append((vizinho, caminho + [vizinho]))
-
-        return None  # Caminho não encontrado
+        return None  
 
     def contar_regioes_desconectadas(self):
-        """Conta quantas regiões desconectadas existem no grafo."""
         visitados = set()
         regioes = 0
-
         for local in self.adjacencia:
             if local not in visitados:
                 self.buscar_profundidade(local, visitados)
                 regioes += 1
-
         return regioes
 
 
-# Criando o grafo e adicionando os locais (vértices)
+
 mapa = GrafoMapaCidade()
 ruas = [
     "R. Anacleto Felicio do Carmo", "R. Zico Lopes", "R. Tupaciguara",
@@ -83,8 +76,6 @@ ruas = [
 for rua in ruas:
     mapa.adicionar_locais(rua)
 
-
-# Função para adicionar todas as conexões (arestas) entre as ruas
 def adicionar_ligacoes():
     cruzamentos = [
         ("R. Zico Lopes", "R. João Januário"), ("R. Zico Lopes", "R. Dr. Sandoval Henrique de Sá"),
@@ -102,15 +93,11 @@ def adicionar_ligacoes():
     for origem, destino in cruzamentos:
         mapa.adicionar_cruzamento(origem, destino)
 
-
-# Adicionando as conexões
 adicionar_ligacoes()
 
-# Exibindo o grafo
 print("Mapa da Cidade (Grafo):")
 mapa.exibir_grafo()
 
-# Testando buscas
 print("Busca em Profundidade (DFS) a partir de 'R. João Januário':")
 mapa.buscar_profundidade("R. João Januário")
 print("\n")
@@ -119,7 +106,6 @@ print("Busca em Largura (BFS) a partir de 'R. João Januário':")
 mapa.busca_largura("R. João Januário")
 print("\n")
 
-# Encontrando o menor caminho usando BFS
 inicio = "R. João Januário"
 destino = "R. Araguari"
 caminho = mapa.encontrar_caminho_bfs(inicio, destino)
@@ -128,5 +114,4 @@ if caminho:
 else:
     print(f"Não há caminho entre '{inicio}' e '{destino}'.")
 
-# Contando regiões desconectadas
 print(f"\nNúmero de regiões desconectadas na cidade: {mapa.contar_regioes_desconectadas()}")
