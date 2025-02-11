@@ -110,8 +110,8 @@ inicio = "R. João Januário"
 destino = "R. Araguari"
 caminho = mapa.encontrar_caminho_bfs(inicio, destino)
 if caminho:
-    print(f"Menor caminho de '{inicio}' até '{destino}': {caminho}")
+    print(f"\nMenor caminho de '{inicio}' até '{destino}': {caminho}")
 else:
-    print(f"Não há caminho entre '{inicio}' e '{destino}'.")
+    print(f"\nNão há caminho entre '{inicio}' e '{destino}'.")
 
 print(f"\nNúmero de regiões desconectadas na cidade: {mapa.contar_regioes_desconectadas()}")
